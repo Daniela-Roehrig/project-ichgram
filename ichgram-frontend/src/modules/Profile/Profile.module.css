@@ -1,0 +1,341 @@
+
+
+ .layout {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+.headerImageWrapper {
+  margin-left: 280px;
+  margin-bottom: -4px;
+}
+
+.headerImage {
+  width: 100%;
+  object-fit: cover;
+  max-height: 180px;
+}
+
+.main {
+  padding: 2rem 4vh;
+  margin-left: 80px;
+  background-color: var(--bg-color, var(--bg));
+  color: var(--text-color, var(--text));
+}
+
+.header {
+  display: flex;
+  gap: 40px; /* weniger Abstand für kompaktes Layout */
+  margin-bottom: 40px;
+  align-items: center; /* vertikale Zentrierung */
+  flex-wrap: wrap;
+}
+
+.avatarWrapper {
+  width: 175px;
+  height: 175px;
+  background: linear-gradient(135deg,  #fd0123, #f8f009, #f004dd);
+  padding: 4px;
+  border-radius: 50%;
+  margin: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 3px 13px 0px rgba(0, 0, 0, 0.2);
+}
+
+.avatar {
+  width: 168px; /* 150px - 2*4px padding */
+  height: 168px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  display: block;
+}
+
+ .info {
+  max-width: 420px;
+  /* bestehende Styles bleiben erhalten */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  gap: 10px;
+  cursor: pointer;
+  color: inherit;
+}
+
+.usernameRow {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.username {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.editButton {
+  padding: 6px 41px;
+  background: rgba(239, 239, 239, 1);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  border: none;
+  transition: background 0.3s, color 0.3s;
+}
+
+.editButton:hover {
+  background: #0095F6; /* var:bluecolor */
+  color: #fff;
+}
+
+.logoutButton{
+ padding: 6px 21px;
+ background: #0095F6;
+ border-radius: 8px;
+ font-weight: 700;
+ margin:20px;
+ border: none;
+ color: #fff;
+}
+
+.stats {
+  display: flex;
+  gap: 64px;
+  font-weight: 600;
+  color: var(--text-color, var(--text));
+}
+
+.bio {
+  font-size: 0.95rem;
+  max-width: 620px;
+  color: inherit;
+  margin-top: 10px;
+  word-wrap: break-word;
+  white-space: pre-line;
+  cursor: pointer;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  position: relative;
+}
+
+
+.bottomSection {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.website {
+  font-size: 14px;
+  color: var(--link-color, #3498db);
+  text-decoration: none;
+}
+
+.website:hover {
+  text-decoration: underline;
+}
+
+.postUploadPlaceholder {
+  font-style: italic;
+  color: #999;
+  border: 1px dashed #ccc;
+  padding: 12px;
+  border-radius: 4px;
+  max-width: 400px;
+}
+
+/* Media Queries */
+
+@media (max-width: 1030px) {
+  .main, .headerImageWrapper {
+    margin-left: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main, .headerImageWrapper {
+    margin-left: 80px;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .avatarWrapper {
+    margin-bottom: 20px;
+  }
+}
+
+.more {
+  color: #acaaaa; /* Farbe wie "Edit Profile"-Button */
+  font-weight: 600;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+/* Modal styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modalContent {
+  background-color: var(--bg, #fff);
+  color: var(--text, #000);
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideIn 0.4s ease;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: inherit;
+  cursor: pointer;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+
+/* Animationen */
+@keyframes slideIn {
+  from {
+    transform: translateX(-30%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.65);
+  }
+}
+
+.postImage {
+  max-width: 308px;
+  max-height: 308px;
+  width: auto;
+  height: auto;
+  object-fit: cover; 
+  border-radius: 8px; 
+}
+
+.logoutButton{
+ padding: 6px 21px;
+ background: #0095F6;
+ border-radius: 8px;
+ font-weight: 700;
+ margin:20px;
+ border: none;
+ color: #fff;
+}
+
+.post {
+  width: 307px;
+  height: 307px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--post-bg, #f0f0f0); /* optionaler Hintergrund */
+  cursor: pointer;
+}
+
+.postsSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 307px);
+  gap: 4px; /* Abstand zwischen Posts */
+  padding: 4px; /* Abstand zum Rand */
+  justify-content: center; /* zentriert das Grid */
+}
+
+.post img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.messageButton {
+    background-color: #d3d3d3;  /* Hellgrauer Hintergrund */
+    color: #000000;  /* Schwarze Schrift */
+    border: none;  /* Keine Umrandung */
+    padding: 8px 46px;  /* Etwas Innenabstand */
+    margin: 6px;
+    font-size: 16px;  /* Schriftgröße */
+    cursor: pointer;  /* Zeigt Hand-Cursor an */
+    border-radius: 5px;  /* Abgerundete Ecken */
+    transition: background-color 0.3s ease;  /* Sanfter Übergang für Hover */
+}
+
+.messageButton:hover {
+    background-color: #a9a9a9;  /* Etwas dunklerer grauer Hintergrund bei Hover */
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+  gap: 12px;
+}
+
+.pageBtn {
+  padding: 6px 14px;
+  font-size: 14px;
+  background-color: #efefef;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.pageBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pageBtn:hover:not(:disabled) {
+  background-color: #ddd;
+}
+
+.pageInfo {
+  font-size: 14px;
+  color: #555;
+}

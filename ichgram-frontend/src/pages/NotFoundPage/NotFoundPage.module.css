@@ -1,0 +1,38 @@
+.notFoundContainer{
+  margin-left: 118px; 
+  display: flex;
+}
+
+.info {
+  flex: 1;
+  display: flex; 
+  flex-direction: column;
+  font-size: 1.5rem;
+  padding: 140px 0 0 0;
+
+}
+
+.info h1{
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.info p{
+  font-size: 16px;
+  color: #737373;
+  padding: 10px 0 0 0;
+  width: 465px;
+  line-height: 20px;
+}
+
+.image{
+  padding: 94px 44px 185px 0;
+}
+
+@media (max-width: 768px) {
+  .notFoundContainer {
+    padding: 7rem;
+    font-size: 1.2rem;
+    margin-left: 80px;
+  }
+}

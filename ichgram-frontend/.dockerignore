@@ -1,0 +1,11 @@
+node_module
+.vscode
+.idea
+.DS_Store
+
+.env
+.env.*
+
+dist
+.git
+.gitignore

@@ -1,0 +1,16 @@
+.avatarWrapper {
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    #fd0123 0%,
+    #f8f009 50%,
+    #f004dd 100%
+  );
+  box-sizing: border-box;
+}

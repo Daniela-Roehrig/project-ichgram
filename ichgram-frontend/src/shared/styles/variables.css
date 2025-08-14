@@ -1,0 +1,21 @@
+:root {
+    --main-text-color: #000;
+    --second-text-color: #0095f6;
+    --grey-text-color: #737373;
+    --light-text-color: #c7c7c7;
+    --link-auth-text-color: #262626;
+    --link-text-color: #00376b;
+    --error-text-color: #ff0014;
+    --white-text-color: #fff;
+
+
+    --second-background-color: #efefef;
+    --form-background-color: #fafafa;
+    --message-background-color: #4d00ff;
+    --hover-background-color: #badefe;
+    --hover-form-background-color: #efefef;
+    --white-background-color: #fff;
+
+    --border-color: #dbdbdb;
+    --focus-border-color: #0095f6;
+}

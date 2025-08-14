@@ -1,0 +1,92 @@
+.authContentBox {
+    border: 1px solid #dbdbdb;
+    border-radius: 1px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 19px;
+}
+
+.imageContainer {
+    width: 190px;
+}
+
+.iconContainer {
+    margin-top: 6px;
+}
+
+.textBox {
+    margin-bottom: 36px;
+}
+
+.textDescriptionBox {
+    width: 268px;
+}
+
+.text {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+    text-align: center;
+    color: var(--grey-text-color);
+}
+
+.textTitle {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+    text-align: center;
+    color: var(--main-text-color);
+    margin: 14px 0;
+}
+
+.textDescription {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 129%;
+    text-align: center;
+    color: var(--grey-text-color);
+    margin-bottom: 16px;
+}
+
+.linkBox {
+    margin-top: 54px;
+}
+
+.link {
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 133%;
+    text-align: center;
+    color: var(--link-text-color);
+    padding: 2px;
+}
+
+.link:hover {
+    background-color: var(--hover-background-color);
+}
+
+.line {
+    width: 106px;
+    height: 1px;
+    background: var(--border-color);
+}
+
+.textOr {
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 115%;
+    text-transform: uppercase;
+    color: var(--grey-text-color);
+}
+
+.lineContainer {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 11px;
+    margin-bottom: 16px;
+}

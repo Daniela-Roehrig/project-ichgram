@@ -1,0 +1,32 @@
+.authFooterContainer {
+    border: 1px solid #dbdbdb;
+    border-radius: 1px;
+    width: 350px;
+    height: 63px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+}
+
+.text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 129%;
+    text-align: center;
+    color: var(--main-text-color);
+}
+
+.link {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 129%;
+    text-align: center;
+    color: var(--second-text-color);
+    padding: 4px;
+}
+
+.link:hover {
+    background-color: var(--hover-background-color);
+}

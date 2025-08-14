@@ -1,0 +1,18 @@
+.errorBox {
+    border: 1px solid #dbdbdb;
+    border-radius: 1px;
+    width: 350px;
+    min-height: 63px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.error {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 133%;
+    text-align: center;
+    color: var(--error-text-color);
+}

@@ -1,0 +1,194 @@
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000A6;
+  z-index: 1000;
+}
+
+.modal {
+  position: absolute;
+  top: 148px;
+  left: 370px; 
+  transform: translateY(-50%);
+  width: 950px;
+  height: 600px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.3s ease forwards;
+}
+.header {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+ 
+}
+
+.header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #333;
+  padding: 6px 10px;
+  position: relative; 
+  z-index: 10;
+}
+
+.shareButton {
+  background-color: #0095f6;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  position: relative; 
+  z-index: 10;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  margin-top: 16px;
+}
+
+.uploadArea {
+  width: 570px;
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  cursor: pointer;
+  text-align: center;
+}
+
+.filename {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+/* Details Area */
+.detailsArea {
+  flex: 1;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #ccc; 
+}
+
+.commentContainer {
+  position: relative;
+  height: 320px; 
+  border-bottom: 1px solid #ccc; 
+  padding-left: 10px; 
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; 
+}
+
+.commentBox {
+  flex: 1;
+  resize: none;
+  border: none;
+  outline: none;
+  padding: 10px 10px 0 0;
+  font-size: 14px;
+  width: 100%;
+  background: transparent;
+  color: #333;
+  caret-color: auto;
+  transition: color 0.3s ease;
+}
+
+.commentBox[readonly] {
+  color: transparent;
+  caret-color: transparent;
+  pointer-events: none;
+}
+
+.commentBox::placeholder {
+  color: #888; 
+}
+
+.activeCommentBox {
+  color: #000;            
+  caret-color: auto;      
+  pointer-events: auto;   
+  background: white;      
+}
+
+.detailsArea:hover .commentBox {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.smileIcon {
+  position: absolute;
+  left: 5px;
+  bottom: 12px; 
+  cursor: pointer;
+  color: #888;
+  background: white;
+  padding: 0 2px;
+  font-size: 18px;
+}
+
+.commentCounter {
+  position: absolute;
+  right: 0;
+  bottom: 75px; 
+  color: #ccc; 
+  font-size: 14px;
+  user-select: none;
+}
+
+.pickerWrapper {
+  position: absolute;
+  z-index: 9999;
+  top: 50px; 
+  right: 350px;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.previewImage {
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}

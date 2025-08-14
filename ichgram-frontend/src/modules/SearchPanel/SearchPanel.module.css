@@ -1,0 +1,80 @@
+.panel {
+  position: fixed;
+  top: 0;
+  width: 398px;
+  height: 1600px;
+  background-color: white;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.header {
+  padding: 16px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.header input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  background-color: rgb(238, 238, 238);
+  border-radius: 4px;
+  outline: none;
+}
+
+.results {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 16px;
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.closeBtn {
+  background-color: rgb(238, 238, 238);
+  color: rgb(113, 113, 113);
+  padding: 6px 6px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.closeBtn:hover {
+  color: rgb(238, 238, 238);
+  background-color: rgb(113, 113, 113);
+}
+
+.result img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.result span {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 16px 0 16px 0;
+  }
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}

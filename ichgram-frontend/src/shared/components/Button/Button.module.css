@@ -1,0 +1,21 @@
+.btn {
+    border-radius: 8px;
+    width: 268px;
+    height: 32px;
+    background: var(--main-background-color);
+    border: none;
+    cursor: pointer;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 129%;
+    text-align: center;
+    color: var(--white-text-color);
+
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.btn:hover {
+    background-color: var(--hover-background-color);
+    color: var(--second-text-color);
+}

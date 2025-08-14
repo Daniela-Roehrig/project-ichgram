@@ -1,0 +1,35 @@
+
+.explorePage {
+    padding: 89px 100px;
+}
+
+.postsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(307px, 1fr));
+    gap: 16px;
+    padding: 0;
+    /* Kein Padding für den Container */
+}
+
+.post {
+  width: 307px;
+  height: 307px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--post-bg, #f0f0f0); 
+  cursor: pointer;
+}
+
+.post img {
+    width: 308px;
+    height: 308px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+    margin: 0;
+    transition: transform 0.3s ease;
+}
+
+.post:hover img {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}

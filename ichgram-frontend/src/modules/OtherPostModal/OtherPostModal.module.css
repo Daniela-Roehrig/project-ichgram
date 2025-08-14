@@ -1,0 +1,313 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: 1px solid #646363; /* Dunkler Hintergrund */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal {
+  width: 1000px;
+  height: 722px;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.3s ease forwards;
+  overflow: hidden;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Header nur über dem rechten Teil */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.username {
+  font-weight: 600;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  height: 100%;
+}
+
+/* Linke Spalte: Bild */
+.imageWrapper {
+  width: 577px;
+  height: 100%;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.postImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* volle Höhe */
+}
+
+/* Rechte Spalte: Kommentare & Interaktion */
+.commentSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #ddd;
+  background: #fff;
+}
+
+/* Kommentarbereich (oberer Teil) */
+.description {
+  margin: 16px 16px 12px 16px;
+  font-size: 14px;
+}
+
+.commentsList {
+  flex: 0 0 370px; /* fixierte Höhe */
+  overflow-y: auto;
+  padding: 0 16px;
+}
+
+.comment {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.commentAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.commentContent {
+  flex: 1;
+}
+
+.commentUser {
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+.commentText {
+  font-size: 14px;
+}
+
+.likeIcon, .commentIcon {
+  cursor: pointer;
+}
+
+/* Neues Kommentarfeld */
+.newComment {
+  display: flex;
+  gap: 8px;
+  padding: 8px 16px;
+  border-top: 1px solid #ddd;
+}
+
+.newComment input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+/* Interaktionsbereich ganz unten */
+.interactionArea {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 16px;
+  border-top: 1px solid #ddd;
+  gap: 8px;
+}
+
+/* Icons: Herz, Kommentar, Send – in einer Reihe */
+.interactionIcons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Icon-Buttons ohne Stil (kein Border etc.) */
+.iconButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 1px;
+  display: flex;
+  align-items: center;
+  color: #222;
+}
+
+.menuButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 1px;
+  display: flex;
+  align-items: center;
+  color: #222;
+  margin-left: auto;
+}
+
+.menuButton:hover {
+  color: #0095f6;
+}
+
+.iconButton:hover {
+  color: #0095f6;
+}
+
+/* Herz-Symbol */
+.iconButton {
+  color: gray;
+  transition: color 0.3s ease;
+}
+
+/* Wenn das Herz geliked wurde */
+.liked {
+  color: red;
+}
+
+
+/* Like-Zähler & Aktivität */
+.likeInfo {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 4px;
+  margin-left: 4px;
+}
+
+.activityInfo {
+  font-size: 12px;
+  color: gray;
+   margin-left: 4px;
+}
+
+.footerBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 4px;
+  border-top: 1px solid #eee;
+}
+
+.saveButton {
+  background-color: #007bff; /* blau */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  margin-right: 8px; /* Abstand zum Smiley */
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.saveButton:disabled {
+  background-color: #a0c8ff;
+  cursor: not-allowed;
+}
+
+.smiley {
+  display: flex;
+  align-items: center;
+}
+
+.emojiPickerContainer {
+  position: absolute;
+  bottom: 0px; 
+  left: 216px;
+  z-index: 1001;
+}
+
+.nameAndFollow {
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+}
+
+.nameAndFollow {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 4px;
+}
+
+.modalContainer {
+  background-color: white;
+  border-radius: 10px;
+  width: 90vw;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.postDescriptionBlock {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.userInfoInBody {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.avatarSmall {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.usernameInBody {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.descriptionText {
+  font-size: 14px;
+  color: #333;
+  padding-left: 40px; /* etwas eingerückt für Textausrichtung unter Avatar */
+  line-height: 1.4;
+}

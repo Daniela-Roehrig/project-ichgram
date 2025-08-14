@@ -1,0 +1,93 @@
+.notificationPanel {
+  position: relative;
+  width: 375px;
+  max-height: 1000px;
+  overflow-y: auto;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.notificationList {
+  list-style: none;
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.notificationItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.content {
+  display: flex;
+  flex-direction: column; 
+  padding-right: 75px; 
+}
+
+.content p {
+  display: inline;        
+}
+
+.content span {
+  display: inline;       
+}
+
+.content .timeAgo {
+  font-size: 0.9rem;        
+  color: #888;           
+  margin-left: 5px;         
+}
+
+
+
+
+.postImage {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.h2{
+  font-size: 24px;
+  font-weight: 700;
+  padding-bottom: 17px
+}
+
+.span{
+  font-size: 16px;
+  font-weight: 700;
+  padding-bottom: 17px;
+}.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; 
+}

@@ -1,0 +1,49 @@
+:root{
+    width: 1440px;
+}
+
+body{
+    font-family: "Roboto", sans-serif;
+}
+
+
+html, body {
+  height: 100%; 
+  font-family: Arial, sans-serif; 
+  background-color: #fff; 
+  overflow-x: hidden; 
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal; 
+}
+
+ul, ol {
+  list-style: none; 
+}
+
+a {
+  text-decoration: none; 
+}
+
+img {
+  max-width: 100%;
+  height: auto; 
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer; 
+}
+
+input, textarea {
+  border: none;
+  outline: none; 
+}

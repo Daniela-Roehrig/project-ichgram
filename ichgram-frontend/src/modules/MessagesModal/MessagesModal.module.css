@@ -1,0 +1,255 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1200px;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  z-index: 1000;
+}
+
+.sidebar {
+  width: 350px;
+  background-color: #fff;
+  border-right: 1px solid #ccc;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px;
+  align-self: flex-end;
+}
+
+.userListTitle {
+  font-weight: 700;
+  font-size: 20px;
+  padding: 37px 24px 58px;
+  border-bottom: 1px solid #ccc;
+  user-select: none;
+}
+
+.userItem {
+  padding: 12px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s ease;
+}
+
+.userItem:hover {
+  background-color: #c9e4f6;
+}
+
+.userItemActive {
+  background-color: #efefef;
+  font-weight: 600;
+}
+
+.chatWindow {
+  flex-grow: 1;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.messagesContainer {
+  padding: 15px 20px;
+  width: 800px;
+  overflow-y: auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chatInfoTop{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.messageSentWrapper,
+.messageReceivedWrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 8px 0;
+  max-width: 400px;
+}
+
+.messageSentWrapper {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.messageReceivedWrapper {
+  align-self: flex-start;
+  text-align: left;
+}
+
+.messageMeta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.messageSentWrapper .messageMeta {
+  justify-content: flex-end;
+}
+
+.messageAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.messageTime {
+  font-size: 12px;
+  color: #999;
+  white-space: nowrap;
+}
+
+.messageBubble {
+  padding: 10px 14px;
+  border-radius: 16px;
+  background-color: #efefef;
+  word-wrap: break-word;
+  font-size: 14px;
+  line-height: 1.4;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.messageSentWrapper .messageBubble {
+  background-color: #4D00FF;
+  color: #fff;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 8px;
+  object-fit: cover;
+  vertical-align: middle;
+}
+
+.chatFooter {
+  padding: 66px 20px 91px;
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+  display: flex;
+}
+
+.chatInput {
+  flex-grow: 1;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 24px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.chatInput:focus {
+  border-color: #0b93f6;
+}
+
+.sendButton {
+  margin-left: 12px;
+  background-color: #0b93f6;
+  color: white;
+  border: none;
+  padding: 0 18px;
+  border-radius: 24px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.sendButton:hover {
+  background-color: #086acb;
+}
+
+.chatHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+}
+
+.chatUserInfoH {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.chatAvatarH {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.chatUserInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chatAvatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  margin-top: 63px;
+  object-fit: cover;
+  margin-bottom: 17px;
+}
+
+.chatUsername {
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.chatName {
+  font-size: 14px;
+  color: #888;
+}
+
+.viewProfileBtn {
+  padding: 8px 20px;
+  background-color: #efefef;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 17px 0 65px 0;
+  transition: background 0.2s;
+}
+
+.viewProfileBtn:hover {
+  background-color: #ddd;
+}
+
+.chatTime {
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+  margin-bottom: 160px;
+}
+

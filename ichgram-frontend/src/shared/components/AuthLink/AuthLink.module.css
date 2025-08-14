@@ -1,0 +1,13 @@
+.link {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 129%;
+    text-align: center;
+    color: var(--link-auth-text-color);
+    padding: 4px;
+}
+
+.link:hover{
+    background-color: var(--hover-background-color);
+}

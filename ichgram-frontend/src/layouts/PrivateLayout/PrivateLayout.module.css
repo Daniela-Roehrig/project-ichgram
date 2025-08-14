@@ -1,0 +1,11 @@
+.private-layout {
+  display: flex;
+  height: 1763px;
+}
+
+.private-content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 245px;
+  overflow-y: auto;
+}

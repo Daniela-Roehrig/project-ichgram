@@ -1,0 +1,39 @@
+.textField {
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    width: 268px;
+    height: 38px;
+    background: var(--form-background-color);
+    padding: 8px;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 129%;
+    color: var(--main-text-color);
+
+    transition: ease-in-out 500ms;
+}
+
+.textField::placeholder {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 300%;
+    color: var(--grey-text-color);
+}
+
+.textField:focus {
+    border-color: var(--focus-border-color);
+    outline: none;
+}
+
+.textField:hover {
+    background-color: var(--hover-form-background-color);
+}
+
+.textFieldError {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 133%;
+    color: var(--error-text-color);
+    margin-top: 3px;
+}
