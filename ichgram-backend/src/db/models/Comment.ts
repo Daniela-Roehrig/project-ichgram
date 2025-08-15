@@ -4,7 +4,7 @@ import mongoose, { Schema, Document, Types } from "mongoose";
 export interface CommentDocument extends Document {
   postId: Types.ObjectId;
   user: Types.ObjectId; 
-  text: string;
+  text: string; 
   likes: Types.ObjectId[]; 
   createdAt: Date;
   updatedAt: Date;

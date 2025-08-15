@@ -13,9 +13,11 @@ import { addComment, getComments } from "../controllers/comment.controller";
 import { likeController } from "../controllers/like.controller";
 import { authenticate } from "../middlewares/authorization";
 import upload from "../middlewares/upload";
+import { getRandomPostsController } from "../controllers/post.controller";
 
 const postRouter = Router();
 
+postRouter.get("/random", authenticate, getRandomPostsController)
 postRouter.get("/feed", authenticate, feedController);
 postRouter.get("/user/:id", authenticate, userPostsController);
 postRouter.get("/:id", authenticate, postByIdController);

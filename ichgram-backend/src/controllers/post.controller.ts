@@ -1,10 +1,48 @@
-import { Response } from "express";
+
 import * as postsService from "../services/post.service";
 import { CreatePostInput, UpdatePostInput } from "../services/post.service";
 
 import { AuthenticatedRequest } from "../typescript/interfaces";
 import HttpExeption from "../utils/HttpExeption";
 import { PostModel } from "../db/models/Post";
+
+import { Request, Response } from "express";
+
+import User from "../db/models/User";
+import { CommentModel } from "../db/models/Comment";
+
+export const getRandomPostsController = async (req: Request, res: Response) => {
+  try {
+    const posts = await PostModel.aggregate([
+      { $sample: { size: 5 } }, // 5 zufällige Posts
+    ]);
+
+    // Optional: Autoren und Kommentare populieren
+    const populatedPosts = await PostModel.populate(posts, {
+      path: "author",
+      select: "username avatar",
+    });
+
+    for (const post of populatedPosts) {
+      const [firstComment] = await CommentModel.find({ postId: post._id })
+        .sort({ createdAt: 1 })
+        .limit(1)
+        .populate("user", "username")
+        .lean();
+
+      const commentCount = await CommentModel.countDocuments({ postId: post._id });
+
+      post.firstComment = firstComment || null;
+      post.commentCount = commentCount;
+    }
+
+    res.status(200).json(populatedPosts);
+  } catch (error) {
+    console.error("Fehler beim Laden zufälliger Posts:", error);
+    res.status(500).json({ message: "Interner Serverfehler" });
+  }
+};
+
 
 const OK = (res: Response, data: any, message?: string) =>
   res.json({

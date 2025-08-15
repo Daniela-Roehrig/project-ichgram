@@ -8,7 +8,7 @@ export interface IUser {
   username: string;
   password: string;
   token?: string;
-  refreshToken?: string;
+  refreshToken?: string; 
   avatar?: string;
   website?: string;
   bio: string;
