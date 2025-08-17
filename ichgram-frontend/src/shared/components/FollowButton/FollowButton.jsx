@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./FollowButton.module.css";
+
 
 export default function FollowButton({
   targetUserId,
@@ -10,6 +11,11 @@ export default function FollowButton({
 }) {
   const [isFollowing, setIsFollowing] = useState(initialIsFollowing);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+  setIsFollowing(initialIsFollowing);
+  
+}, [initialIsFollowing]);
 
   const handleToggle = async () => {
     setLoading(true);

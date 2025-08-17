@@ -4,7 +4,7 @@ import Notification from "../db/models/Notification";
 
 export const likeController = async (req: Request, res: Response) => {
   try {
-    const postId = req.params.postId;
+    const postId = req.params.id;
     const userId = req.user?._id;
 
     if (!userId) {

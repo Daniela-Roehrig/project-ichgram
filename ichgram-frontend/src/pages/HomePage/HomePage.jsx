@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Heart, MessageCircle } from "lucide-react"; 
-import styles from "./HomePage.module.css"; 
-import OtherPostModal from "../../modules/OtherPostModal/OtherPostModal"; 
+import { Heart, MessageCircle } from "lucide-react";
+import { Link } from "react-router-dom";
+import styles from "./HomePage.module.css";
+import OtherPostModal from "../../modules/OtherPostModal/OtherPostModal";
 import FollowButton from "../../shared/components/FollowButton/FollowButton";
 import * as jwtDecode from "jwt-decode";
 import getAvatarUrl from "../../shared/components/Avatar/AvatarUrl";
-
 
 export default function HomePage() {
   const [feed, setFeed] = useState([]);
@@ -17,72 +17,83 @@ export default function HomePage() {
 
   const toggleLike = async (postId) => {
     try {
-      
-      const post = feed.find(p => p._id === postId);
-      const hasLiked = post.likes.includes(currentUserId);
-
       const res = await axios.post(
         `/api/posts/${postId}/like`,
         {},
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
+        { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      const updatedLikes = res.data.likes;
+      const { likesCount, likedByUser } = res.data;
 
       setFeed((prevFeed) =>
         prevFeed.map((p) =>
-          p._id === postId ? { ...p, likes: updatedLikes } : p
+          p._id === postId
+            ? { ...p, likes: Array(likesCount).fill("x"), likedByUser }
+            : p
         )
       );
+
+      setLiked((prev) => ({ ...prev, [postId]: likedByUser }));
     } catch (error) {
       console.error("Fehler beim Liken:", error);
     }
   };
 
+  const currentUserId = token
+    ? (() => {
+        try {
+          const decoded = jwtDecode(token);
+          return decoded.id || decoded._id || null;
+        } catch {
+          return null;
+        }
+      })()
+    : null;
 
-  const currentUserId = token ? (() => {
-    try {
-      const decoded = jwtDecode(token);
-      return decoded.id || decoded._id || null;
-    } catch {
-      return null;
-    }
-  })() : null;
-
- useEffect(() => {
-  const fetchFeed = async () => {
-    if (!token) {
-      console.error("Kein Token gefunden");
-      return;
-    }
-    try {
-      const res = await axios.get("/api/follow/feed", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-
-      if (res.data.length === 0) {
-        // Wenn Feed leer, lade zufällige Posts
-        const randomRes = await axios.get("/api/posts/random", {
+  useEffect(() => {
+    const fetchFeed = async () => {
+      if (!token) {
+        console.error("Kein Token gefunden");
+        return;
+      }
+      try {
+        const res = await axios.get("/api/follow/feed", {
           headers: { Authorization: `Bearer ${token}` },
         });
-        setFeed(randomRes.data);
-      } else {
-        setFeed(res.data);
+
+        if (res.data.length === 0) {
+          const randomRes = await axios.get("/api/posts/random", {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          setFeed(randomRes.data);
+
+          const likedMap = {};
+          randomRes.data.forEach((post) => {
+            likedMap[post._id] = post.likes?.includes(currentUserId) || false;
+          });
+          setLiked(likedMap);
+        } else {
+          setFeed(res.data);
+
+          const likedMap = {};
+          res.data.forEach((post) => {
+            likedMap[post._id] = post.likes?.includes(currentUserId) || false;
+          });
+          setLiked(likedMap);
+        }
+      } catch (err) {
+        console.error("Fehler beim Laden des Feeds:", err);
       }
-    } catch (err) {
-      console.error("Fehler beim Laden des Feeds:", err);
-    }
-  };
+    };
 
-  fetchFeed();
-}, [token]);
-
+    fetchFeed();
+  }, [token, currentUserId]);
 
   const formatTimeAgo = (date) => {
     const now = new Date();
-    const diffInSeconds = Math.floor((now.getTime() - new Date(date).getTime()) / 1000);
+    const diffInSeconds = Math.floor(
+      (now.getTime() - new Date(date).getTime()) / 1000
+    );
     if (diffInSeconds < 60) return `${diffInSeconds}s`;
     const diffInMinutes = Math.floor(diffInSeconds / 60);
     if (diffInMinutes < 60) return `${diffInMinutes}m`;
@@ -100,7 +111,7 @@ export default function HomePage() {
   const toggleFollow = (authorId) => {
     setFollowing((prev) => ({
       ...prev,
-      [authorId]: !prev[authorId], 
+      [authorId]: !prev[authorId],
     }));
   };
 
@@ -109,14 +120,22 @@ export default function HomePage() {
       <div className={styles.feed}>
         {feed.map((post) => (
           <div key={post._id} className={styles.postContainer}>
-
             <div className={styles.header}>
-              <img
-                src={getAvatarUrl(post.author.avatar)}
-                alt={post.author.username}
-                className={styles.avatar}
-              />
-              <span className={styles.username}>{post.author.username}</span>
+              <Link to={`/users/${post.author._id}`}>
+                <img
+                  src={getAvatarUrl(post.author.avatar)}
+                  alt={post.author.username}
+                  className={styles.avatar}
+                  style={{ cursor: "pointer" }}
+                />
+              </Link>
+              <Link
+                to={`/users/${post.author._id}`}
+                className={styles.username}
+                style={{ textDecoration: "none", color: "inherit", marginLeft: 8 }}
+              >
+                {post.author.username}
+              </Link>
               <span className={styles.separator}>•</span>
               <span className={styles.timeAgo}>{formatTimeAgo(post.createdAt)}</span>
               <span className={styles.separator}>•</span>
@@ -124,7 +143,7 @@ export default function HomePage() {
               <FollowButton
                 targetUserId={post.author._id}
                 currentUserId={currentUserId}
-                isFollowing={!!following[post.author._id]}
+                initialIsFollowing={!!following[post.author._id]}
                 onFollowChange={(nowFollowing) => {
                   setFollowing((prev) => ({
                     ...prev,
@@ -141,8 +160,8 @@ export default function HomePage() {
                 size={24}
                 className={styles.icon}
                 onClick={() => toggleLike(post._id)}
-                color={liked[post._id] ? 'red' : 'black'}
-                style={{ cursor: 'pointer' }}
+                color={liked[post._id] ? "red" : "black"}
+                style={{ cursor: "pointer" }}
               />
               <MessageCircle
                 size={24}
@@ -151,9 +170,7 @@ export default function HomePage() {
               />
             </div>
 
-            <p className={styles.likes}>
-              {post.likes?.length ?? 0} likes
-            </p>
+            <p className={styles.likes}>{post.likes?.length ?? 0} likes</p>
 
             <p className={styles.description}>
               <strong>{post.author.username}</strong> {post.description}
@@ -161,7 +178,8 @@ export default function HomePage() {
 
             {post.firstComment && (
               <p className={styles.comment}>
-                <strong>{post.firstComment.username}</strong> {post.firstComment.text.slice(0, 60)}...
+                <strong>{post.firstComment.username}</strong>{" "}
+                {post.firstComment.text.slice(0, 60)}...
                 <span className={styles.more}> more</span>
               </p>
             )}
@@ -179,10 +197,7 @@ export default function HomePage() {
         ))}
 
         {selectedPost && (
-          <OtherPostModal
-            post={selectedPost}
-            onClose={() => setSelectedPost(null)}
-          />
+          <OtherPostModal post={selectedPost} onClose={() => setSelectedPost(null)} />
         )}
       </div>
 

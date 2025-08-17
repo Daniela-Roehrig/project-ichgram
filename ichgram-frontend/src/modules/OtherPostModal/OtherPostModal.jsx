@@ -19,15 +19,15 @@ export default function PostModal({ post, onClose }) {
 
   const postUser = post?.author && post.author._id
     ? {
-        username: post.author.username,
-        avatar: getAvatarUrl(post.author.avatar),
-        _id: post.author._id,
-      }
+      username: post.author.username,
+      avatar: getAvatarUrl(post.author.avatar),
+      _id: post.author._id,
+    }
     : {
-        username: "Unbekannt",
-        avatar: getAvatarUrl(null),
-        _id: null,
-      };
+      username: "Unbekannt",
+      avatar: getAvatarUrl(null),
+      _id: null,
+    };
 
   // Kommentare laden
   const fetchComments = async () => {
@@ -64,11 +64,14 @@ export default function PostModal({ post, onClose }) {
     if (!token) return;
     try {
       const res = await axios.post(
-        `/api/likes/${post._id}`,
+        `/api/posts/${post._id}/like`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
-   
+
+      post.likedByUser = res.data.likedByUser;
+      post.likes = res.data.likesCount;
+
     } catch (err) {
       console.error("Fehler beim Liken des Posts:", err);
     }
@@ -85,10 +88,10 @@ export default function PostModal({ post, onClose }) {
         prev.map((c) =>
           c._id === id
             ? {
-                ...c,
-                likes: res.data.likesCount,
-                likedByUser: res.data.likedByUser,
-              }
+              ...c,
+              likes: res.data.likesCount,
+              likedByUser: res.data.likedByUser,
+            }
             : c
         )
       );
@@ -135,7 +138,7 @@ export default function PostModal({ post, onClose }) {
           )}
 
           <div className={styles.commentSection}>
-    
+
             <div className={styles.header}>
               <div className={styles.userInfo}>
                 <img src={postUser.avatar} alt="avatar" className={styles.avatar} />
